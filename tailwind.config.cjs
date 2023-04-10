@@ -21,6 +21,9 @@ module.exports = {
           },
         },
       },
+      minHeight: {
+        "screen-home": "calc(100vh - 64px)",
+      },
     },
   },
   plugins: [],

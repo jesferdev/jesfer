@@ -141,7 +141,7 @@
   const svgs = Array.from(hero.querySelectorAll("svg"));
 
   const w = window.innerWidth;
-  const h = window.innerHeight - 280;
+  const h = window.innerHeight - 350;
 
   function animateBackgroundIcons() {
     const availableSvgs = svgs.filter((svg) => !svg.isAnimating);
@@ -169,6 +169,6 @@
     svgToAnimate.isAnimating = true;
   }
 
-  setInterval(animateBackgroundIcons, 1000);
+  setInterval(animateBackgroundIcons, 700);
   animateBackgroundIcons();
 </script>

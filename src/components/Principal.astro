@@ -1,22 +1,24 @@
+---
+import { Image } from "@astrojs/image/components";
+import photo from "../assets/foto_bn.jpg";
+---
+
 <div class="block px-6 mx-auto max-w-7xl">
   <div
-    class="flex flex-col flex-wrap items-center justify-center w-full mx-auto leading-6 lg:flex-row"
+    class="flex flex-col flex-wrap items-center justify-center w-full mx-auto leading-6 min-h-screen-home"
   >
-    <div
-      class="relative flex flex-row items-center gap-10 min-h-screen"
-      id="hero"
-    >
+    <div class="relative flex flex-row items-center gap-10" id="hero">
       <div>
         <h1 class="text-8xl text-[#FFB800] font-bold mb-2">Jesús Luján</h1>
         <h5 class="text-[#FFE8AE] text-xl font-semibold mb-5">
           Ingeniero de Sistemas y Computación
         </h5>
-        <h3 class="text-4xl font-bold mb-5 text-neutral-200">
+        <h3 class="text-4xl font-bold mb-5 text-neutral-300">
           +2 años en Desarrollo de Software
         </h3>
         <div class="flex flex-row gap-5">
           <svg
-            class="fill-[#FFE8AE]"
+            class="fill-neutral-300"
             width="35px"
             height="35px"
             viewBox="0 0 32 32"
@@ -33,7 +35,7 @@
             </g></svg
           >
           <svg
-            class="fill-[#FFE8AE]"
+            class="fill-neutral-300"
             height="35px"
             width="35px"
             version="1.1"
@@ -52,7 +54,7 @@
             </g></svg
           >
           <svg
-            class="fill-[#FFE8AE]"
+            class="fill-neutral-300"
             width="35px"
             height="35px"
             viewBox="0 0 512 512"
@@ -88,8 +90,23 @@
       <div
         class="flex w-[300px] h-[300px] relative justify-center items-center overflow-hidden rounded-[50%]"
       >
-        <img class="mt-[-50px]" src="/assets/foto_bn.jpg" />
+        <Image alt="Jesfer's photo" class="mt-[-5px]" src={photo} />
       </div>
+    </div>
+    <div class="flex flex-col items-center mt-10">
+      <h5 class="text-[#FFE8AE] text-xl font-semibold">Conoce más</h5>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="fill-[#FFE8AE] w-10"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"></path>
+      </svg>
     </div>
   </div>
 </div>
