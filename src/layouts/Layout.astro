@@ -1,5 +1,5 @@
 ---
-import Navbar from "../components/Navbar.astro";
+import "@fontsource/inter/latin.css";
 
 export interface Props {
   title: string;
@@ -17,7 +17,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="font-sans">
     <slot />
   </body>
 </html>
