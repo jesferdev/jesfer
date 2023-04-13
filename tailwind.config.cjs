@@ -11,6 +11,7 @@ module.exports = {
       },
       animation: {
         "moving-background": "moving-background 5s ease-in-out",
+        typing: "typing 2s steps(33)",
       },
       keyframes: {
         "moving-background": {
@@ -24,6 +25,14 @@ module.exports = {
           "100%": {
             transform: "translateY(-150px)",
             opacity: 0,
+          },
+        },
+        typing: {
+          "0%": {
+            width: "0%",
+          },
+          "100%": {
+            width: "100%",
           },
         },
       },
