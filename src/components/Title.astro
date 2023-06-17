@@ -1,0 +1,22 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="flex flex-row justify-center p-2">
+  <div class="flex flex-col justify-center relative">
+    <span
+      class="pr-[1px] h-[100px] self-center bg-gradient-to-t from-orange-500 to-yellow-300"
+    ></span>
+    <div
+      class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-yellow-300"
+    >
+    </div>
+  </div>
+</div>
+<h3 class="text-4xl font-bold mb-12 text-[#FFB800] text-center">
+  {title}
+</h3>
