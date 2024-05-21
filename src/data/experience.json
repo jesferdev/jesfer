@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "current": false,
+        "title": "Desarrollador de Software como profesional independiente",
+        "tenure": "Agosto 2020 - Diciembre 2021 [Chiclayo, Perú]",
+        "description": " Desarrollo de Aplicaciones web basadas en ReactJS, API GraphQL en Python, NodeJS y .NET, base de datos PostgreSQL y SQL Server."
+    },
+    {
+        "id": 2,
+        "current": false,
+        "title": "Asistente de TI en Municipalidad Provincial de Chiclayo",
+        "tenure": "Enero 2021 - Marzo 2021 [Chiclayo, Perú]",
+        "description": "Realización de pruebas de caja negra a una aplicación web de gestión documentaria, así como documentación y exposición de los resultados."
+    },
+    {
+        "id": 3,
+        "current": false,
+        "title": "Desarrollador de Software en Aerogas del Norte S.A.C.",
+        "tenure": "Febrero 2022 - Enero 2023 [Chiclayo, Perú]",
+        "description": "Puesta en producción, mediante metodologías ágiles, de Aerogas Reportes, una aplicación construida con ReactJS, API REST Python y MongoDB, que permite la representación visual de datos mediante gráficos con información consolidada sobre ventas y contribuyó en la disminución del tiempo invertido al establecer precios de venta."
+    },
+    {
+        "id": 4,
+        "current": false,
+        "title": "Analista Programador Fullstack en Analytia Consulting S.A.C.",
+        "tenure": "Mayo 2023 - Julio 2023 [Lima, Perú]",
+        "description": "Desarrollo de aplicación web de gestión documentaria que automatiza el proceso de recepción y verificación de comprobantes entre proveedores y clientes."
+    },
+    {
+        "id": 5,
+        "current": true,
+        "title": "Assistant Consulting-Digital & Emerging Technologies en Ernst & Young Asesores Empresariales S.C.R.L.",
+        "tenure": "Agosto 2023 - Abril 2024 [Lima, Perú]",
+        "description": "Desarrollo de Bots RPA para la automatización de procesos en importantes empresas del Perú."
+    }
+]
