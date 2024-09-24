@@ -35,7 +35,7 @@ const { current, title, tenure, description } = Astro.props;
       ></path></svg
     >
   </span>
-  <h3 class="mb-1 text-lg font-semibold text-[#FFE8AE]">
+  <h3 class="mb-1 text-base font-semibold text-[#FFE8AE]">
     {title}
     {
       current && (
@@ -48,7 +48,4 @@ const { current, title, tenure, description } = Astro.props;
   <time class="block mb-2 text-sm font-normal leading-none text-neutral-500"
     >{tenure}</time
   >
-  <p class="mb-4 text-base font-normal text-neutral-300">
-    {description}
-  </p>
 </li>

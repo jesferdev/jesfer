@@ -1,0 +1,60 @@
+---
+import Title from "./Title.astro";
+import experience from "../data/experience.json";
+import Job from "./Job.astro";
+experience.sort((a, b) => b.id - a.id);
+---
+
+<section class="relative w-full overflow-hidden bg-black">
+  <div class="px-6 mx-auto max-w-5xl">
+    <Title title="Acerca de mí" />
+    <div class="flex flex-row justify-between items-stretch mb-20 gap-10">
+      <div class="flex flex-col w-1/2 gap-10">
+        <div
+          class="border border-neutral-700 rounded-lg p-10 flex-none justify-center"
+        >
+          <div class="text-[1.3rem] font-bold text-[#FFB800]">
+            Titulado de la Universidad de Católica Santo Toribio de Mogrovejo
+          </div>
+          <div class="text-sm font-normal text-neutral-500">
+            Chiclayo - Lambayeque, Perú
+          </div>
+        </div>
+        <div
+          class="border border-neutral-700 rounded-lg p-10 flex-1 flex flex-col justify-center gap-5"
+        >
+          <p class="text-base font-normal text-neutral-300">
+            Apasionado por la tecnología, con experiencia en desarrollo de
+            software y conocimientos en Frontend y Backend utilizando
+            principalmente ReactJS, Python, SQL y MongoDB.
+          </p>
+          <p class="text-base font-normal text-neutral-300">
+            Profesional proactivo, con habilidades en resolución de problemas,
+            comprometido con la calidad del trabajo y la aplicación de las
+            últimas tendencias en tecnología para ofrecer soluciones innovadoras
+            y eficientes.
+          </p>
+        </div>
+      </div>
+      <!-- Segunda columna con un solo recuadro proporcional -->
+      <div class="flex w-1/2">
+        <div
+          class="border border-neutral-700 rounded-lg p-10 flex-1 flex flex-col justify-center"
+        >
+          <ol class="relative border-l border-neutral-700">
+            {
+              experience.map((job) => (
+                <Job
+                  current={job.current}
+                  title={job.title}
+                  tenure={job.tenure}
+                  description={job.description}
+                />
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
