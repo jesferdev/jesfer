@@ -1,0 +1,71 @@
+[
+    {
+        "id": 1,
+        "name": "ReactJS",
+        "iconName": "react"
+    },
+    {
+        "id": 2,
+        "name": "JavaScript",
+        "iconName": "javascript"
+    },{
+        "id": 3,
+        "name": "HTML",
+        "iconName": "html"
+    },
+    {
+        "id": 4,
+        "name": "CSS",
+        "iconName": "css"
+    },
+    {
+        "id": 5,
+        "name": "TailwindCSS",
+        "iconName": "tailwind"
+    },
+    {
+        "id": 6,
+        "name": "Astro",
+        "iconName": "astro"
+    },
+    {
+        "id": 7,
+        "name": "NodeJS",
+        "iconName": "node"
+    },
+    {
+        "id": 8,
+        "name": "PostgreSQL",
+        "iconName": "postgresql"
+    },
+    {
+        "id": 9,
+        "name": "MongoDB",
+        "iconName": "mongodb"
+    },
+    {
+        "id": 10,
+        "name": "GraphQL",
+        "iconName": "graphql"
+    },
+    {
+        "id": 11,
+        "name": "Python",
+        "iconName": "python"
+    },
+    {
+        "id": 12,
+        "name": "Vue",
+        "iconName": "vue"
+    },
+    {
+        "id": 13,
+        "name": "flask",
+        "iconName": "flask"
+    },
+    {
+        "id": 14,
+        "name": "Java",
+        "iconName": "java"
+    }
+]

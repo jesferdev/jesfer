@@ -1,0 +1,15 @@
+---
+import Icon from "./Icon.astro";
+const { name, iconName } = Astro.props;
+---
+
+<div
+  class="flex flex-col justify-center items-center border border-neutral-700 rounded-lg p-7 transition-transform duration-200 hover:scale-105"
+>
+  <Icon iconName={iconName} />
+  <h3
+    class="flex items-center mt-3 text-lg font-semibold text-neutral-300 text-center"
+  >
+    {name}
+  </h3>
+</div>

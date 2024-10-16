@@ -1,0 +1,28 @@
+[
+    
+    {
+        "id": 1,
+        "name": "Resolución de problemas",
+        "iconName": "problemSolving"
+    },
+   
+    {
+        "id": 2,
+        "name": "Responsabilidad",
+        "iconName": "responsibility"
+    },
+    {
+        "id": 3,
+        "name": "Adaptabilidad",
+        "iconName": "adaptability"
+    },
+    {
+        "id": 4,
+        "name": "Principios ágiles",
+        "iconName": "agilePrinciples"
+    }, {   
+        "id": 5,
+        "name": "Rápido aprendizaje",
+        "iconName": "fastLearning"
+    }
+]

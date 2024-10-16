@@ -1,0 +1,58 @@
+---
+// SOFT SKILLS
+import Adaptability from "./icons/skills/Adaptability.astro";
+import AgilePrinciples from "./icons/skills/AgilePrinciples.astro";
+import FastLearning from "./icons/skills/FastLearning.astro";
+import ProblemSolving from "./icons/skills/ProblemSolving.astro";
+import Responsibility from "./icons/skills/Responsibility.astro";
+
+// TECH STACK
+import Astrojs from "./icons/technologies/Astrojs.astro";
+import Css from "./icons/technologies/Css.astro";
+import Flask from "./icons/technologies/Flask.astro";
+import Graphql from "./icons/technologies/Graphql.astro";
+import Html from "./icons/technologies/Html.astro";
+import Java from "./icons/technologies/Java.astro";
+import Javascript from "./icons/technologies/Javascript.astro";
+import Mongodb from "./icons/technologies/Mongodb.astro";
+import Node from "./icons/technologies/Node.astro";
+import Postgresql from "./icons/technologies/Postgresql.astro";
+import Python from "./icons/technologies/Python.astro";
+import React from "./icons/technologies/React.astro";
+import Tailwind from "./icons/technologies/Tailwind.astro";
+import Vue from "./icons/technologies/Vue.astro";
+
+const { iconName } = Astro.props;
+
+const icons = {
+  // SOFT SKILLS
+  adaptability: Adaptability,
+  agilePrinciples: AgilePrinciples,
+  fastLearning: FastLearning,
+  problemSolving: ProblemSolving,
+  responsibility: Responsibility,
+  // TECH STACK
+  astro: Astrojs,
+  css: Css,
+  flask: Flask,
+  graphql: Graphql,
+  html: Html,
+  java: Java,
+  javascript: Javascript,
+  mongodb: Mongodb,
+  node: Node,
+  postgresql: Postgresql,
+  python: Python,
+  react: React,
+  tailwind: Tailwind,
+  vue: Vue,
+};
+
+if (!icons[iconName]) {
+  throw new Error(`Icon ${iconName} not found`);
+}
+
+const IconComponent = icons[iconName];
+---
+
+<IconComponent />
