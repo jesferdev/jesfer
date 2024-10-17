@@ -5,11 +5,11 @@ const { name, iconName } = Astro.props;
 
 <div class="relative group flex flex-grow cursor-default">
   <div
-    class="absolute -inset-1 bg-[#FFB800] rounded-lg blur-sm opacity-0 transition-opacity duration-[2000ms] ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:opacity-100 group-hover:duration-[800ms]"
+    class="absolute -inset-1 bg-[#FFE8AE] rounded-lg blur-sm opacity-0 transition-opacity duration-[2000ms] ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:opacity-100 group-hover:duration-[800ms]"
   >
   </div>
   <div
-    class="relative flex flex-col justify-center items-center border border-neutral-700 rounded-lg p-7 bg-black w-full transition-transform duration-[2000ms] ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:scale-105 group-hover:duration-[800ms] will-change-transform"
+    class="relative flex flex-col justify-center items-center z-10 border border-neutral-700 rounded-lg p-7 bg-black w-full transition-transform duration-[2000ms] ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:scale-105 group-hover:duration-[800ms] will-change-transform"
   >
     <Icon iconName={iconName} />
     <h3
