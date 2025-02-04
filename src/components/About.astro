@@ -1,28 +1,28 @@
 ---
-import Title from "./Title.astro";
-import University from "./University.astro";
-import Profile from "./Profile.astro";
-import Experience from "./Experience.astro";
+import Title from "@/components/Title.astro";
+import University from "@/components/University.astro";
+import Profile from "@/components/Profile.astro";
+import Experience from "@/components/Experience.astro";
 ---
 
-<section class="relative w-full overflow-hidden bg-black" id="about">
-  <div class="px-6 mx-auto max-w-5xl animate-fade-in">
+<section class="relative w-full overflow-hidden" id="about">
+  <div class="">
     <Title title="Acerca de mí" />
     <div
       class="flex flex-col md:flex-row justify-between items-stretch mb-20 gap-10"
     >
       <div class="flex flex-col w-full md:w-1/2 gap-10">
-        <div class="custom-hidden">
+        <div>
           <University />
         </div>
-        <div class="custom-hidden">
+        <div>
           <Profile />
         </div>
       </div>
       <div class="flex w-full md:w-1/2">
-        <div class="custom-hidden">
+        <di>
           <Experience />
-        </div>
+        </di>
       </div>
     </div>
   </div>
@@ -32,13 +32,12 @@ import Experience from "./Experience.astro";
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("custom-show");
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.1 }
   );
 
   const hiddenElements = document.querySelectorAll(".custom-hidden");
