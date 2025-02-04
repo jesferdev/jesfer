@@ -1,4 +1,6 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js"; 
+
 // SOFT SKILLS
 import Adaptability from "./icons/skills/Adaptability.astro";
 import AgilePrinciples from "./icons/skills/AgilePrinciples.astro";
@@ -24,7 +26,7 @@ import Vue from "./icons/technologies/Vue.astro";
 
 const { iconName } = Astro.props;
 
-const icons = {
+const icons: Record<string, AstroComponentFactory> = {
   // SOFT SKILLS
   adaptability: Adaptability,
   agilePrinciples: AgilePrinciples,

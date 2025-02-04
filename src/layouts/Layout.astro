@@ -1,23 +1,26 @@
 ---
-import "@fontsource/inter/latin.css";
+import BaseHead from "@/components/BaseHead.astro";
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 
 export interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <BaseHead title={title} description={description} />
   </head>
-  <body class="font-sans">
-    <slot />
+  <body class="flex flex-col min-h-screen font-sans">
+    <Navbar />
+    <main class="flex-grow relative w-full overflow-hidden">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

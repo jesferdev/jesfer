@@ -1,8 +1,9 @@
 ---
 import Icon from "./Icon.astro";
+
 const { name, iconName } = Astro.props;
 
-const iconColorMap = {
+const iconColorMap: Record<string, string> = {
   react: "bg-sky-700",
   javascript: "bg-yellow-300",
   html: "bg-orange-600",

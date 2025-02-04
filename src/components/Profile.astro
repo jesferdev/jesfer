@@ -1,3 +1,7 @@
+---
+import profile from "../data/profile.json";
+---
+
 <div
   class="border border-neutral-700 rounded-lg p-10 flex-1 flex flex-col justify-center gap-5"
 >
@@ -27,14 +31,10 @@
     </g></svg
   >
   <p class="text-base font-normal text-neutral-300">
-    Apasionado por la tecnología, con experiencia en desarrollo de software y
-    conocimientos en Frontend y Backend utilizando principalmente ReactJS,
-    Python, SQL y MongoDB.
+    {profile.hard}
   </p>
 
   <p class="text-base font-normal text-neutral-300">
-    Profesional proactivo, con habilidades en resolución de problemas,
-    comprometido con la calidad del trabajo y la aplicación de las últimas
-    tendencias en tecnología para ofrecer soluciones innovadoras y eficientes.
+    {profile.soft}
   </p>
 </div>
