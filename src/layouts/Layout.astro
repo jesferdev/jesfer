@@ -1,6 +1,6 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
-import Navbar from "@/components/Navbar.astro";
+import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.astro";
 
 export interface Props {
@@ -17,7 +17,7 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body class="flex flex-col min-h-screen font-sans">
-    <Navbar />
+    <Navbar client:idle />
     <main class="flex-grow relative w-full overflow-hidden">
       <slot />
     </main>
