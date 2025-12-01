@@ -1,5 +1,5 @@
 ---
-import type { AstroComponentFactory } from "astro/runtime/server/index.js"; 
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 // SOFT SKILLS
 import Adaptability from "./icons/skills/Adaptability.astro";
@@ -23,6 +23,9 @@ import Python from "./icons/technologies/Python.astro";
 import React from "./icons/technologies/React.astro";
 import Tailwind from "./icons/technologies/Tailwind.astro";
 import Vue from "./icons/technologies/Vue.astro";
+import Dotnet from "./icons/technologies/Dotnet.astro";
+import Kotlin from "./icons/technologies/Kotlin.astro";
+import SqlServer from "./icons/technologies/SqlServer.astro";
 
 const { iconName } = Astro.props;
 
@@ -48,6 +51,9 @@ const icons: Record<string, AstroComponentFactory> = {
   react: React,
   tailwind: Tailwind,
   vue: Vue,
+  dotnet: Dotnet,
+  kotlin: Kotlin,
+  sqlserver: SqlServer,
 };
 
 if (!icons[iconName]) {

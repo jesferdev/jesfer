@@ -1,17 +1,17 @@
 [
     {
-        "id": 6,
+        "id": 7,
         "current": true,
-        "title": "Desarrollador de Software como profesional independiente",
-        "tenure": "Mayo 2024 - Actualidad [Chiclayo, Perú]",
+        "title": "Analista Programador en San Roque S.A.",
+        "tenure": "Abril 2025 - Actualidad [Lambayeque, Perú]",
         "description": " Desarrollo de Aplicaciones web basadas en ReactJS, API GraphQL en Python, NodeJS y .NET, base de datos PostgreSQL y SQL Server."
     },
     {
-        "id": 2,
+        "id": 6,
         "current": false,
-        "title": "Asistente de TI en Municipalidad Provincial de Chiclayo",
-        "tenure": "Enero 2021 - Marzo 2021 [Chiclayo, Perú]",
-        "description": "Realización de pruebas de caja negra a una aplicación web de gestión documentaria, así como documentación y exposición de los resultados."
+        "title": "Desarrollador de Software como profesional independiente",
+        "tenure": "Mayo 2024 - Marzo 2025 [Chiclayo, Perú]",
+        "description": " Desarrollo de Aplicaciones web basadas en ReactJS, API GraphQL en Python, NodeJS y .NET, base de datos PostgreSQL y SQL Server."
     },
     {
         "id": 3,
