@@ -1,3 +1,4 @@
+/* @import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +9,18 @@ html.dark {
 
 body {
     @apply bg-black
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #A8A29E #1e1e1e;
+} */
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+html.dark {
+  color-scheme: dark;
 }
 
 * {

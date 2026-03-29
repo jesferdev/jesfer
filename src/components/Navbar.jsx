@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState } from 'react';
 
 const menuItems = [
   { href: "/", label: "Inicio", disabled: false },
@@ -8,36 +8,10 @@ const menuItems = [
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const menuButtonRef = useRef(null);
-  const mobileMenuRef = useRef(null);
-  const isOpenRef = useRef(isMobileMenuOpen);
 
-  // Actualiza el ref del estado cuando cambia
-  useEffect(() => {
-    isOpenRef.current = isMobileMenuOpen;
-  }, [isMobileMenuOpen]);
-
-  const toggleMobileMenu = useCallback((e) => {
-    e.stopPropagation();
-    setIsMobileMenuOpen(prev => !prev);
-  }, []);
-
-  useEffect(() => {
-    const handleDocumentClick = (event) => {
-      if (
-        isOpenRef.current &&
-        menuButtonRef.current &&
-        !menuButtonRef.current.contains(event.target) &&
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target)
-      ) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleDocumentClick);
-    return () => document.removeEventListener('click', handleDocumentClick);
-  }, []);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
 
   const renderDesktopMenu = () => (
     <div className="hidden md:flex">
@@ -88,7 +62,6 @@ export default function Navbar() {
 
   const renderMobileMenu = () => (
     <div
-      ref={mobileMenuRef}
       className={`md:hidden text-center fixed top-16 left-0 right-0 bg-black bg-opacity-90 p-4 transition-opacity duration-300 ${
         isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}
@@ -102,6 +75,7 @@ export default function Navbar() {
               ? 'text-neutral-500 cursor-not-allowed'
               : 'text-[#FFB800] hover:text-neutral-200'
           }`}
+          onClick={() => setIsMobileMenuOpen(false)}
         >
           {item.label}{item.disabled && ' (Próximamente)'}
         </a>
@@ -110,14 +84,13 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="h-16 relative z-[999] top-0 left-0 right-0 flex justify-center items-center backdrop-blur-sm">
+    <nav className="h-16 relative z-999 top-0 left-0 right-0 flex justify-center items-center backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex justify-center items-center h-full">
           {renderDesktopMenu()}
           
           <div className="md:hidden">
             <button
-              ref={menuButtonRef}
               onClick={toggleMobileMenu}
               className="inline-flex items-center justify-center text-gray-400 hover:text-white focus:outline-none"
               aria-label="Toggle menu"
@@ -141,6 +114,15 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {isMobileMenuOpen && (
+        <button
+          type="button"
+          className="md:hidden fixed inset-0 top-16 z-[-1]"
+          aria-label="Close mobile menu"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
       {renderMobileMenu()}
     </nav>

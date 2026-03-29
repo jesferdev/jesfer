@@ -33,7 +33,7 @@ import Experience from "@/components/Experience.astro";
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.1 },
   );
 
   const hiddenElements = document.querySelectorAll(".custom-hidden");
@@ -41,6 +41,8 @@ import Experience from "@/components/Experience.astro";
 </script>
 
 <style>
+  @reference "tailwindcss";
+
   .custom-hidden {
     @apply opacity-0 transform scale-75 transition-all duration-1000 ease-out;
   }
