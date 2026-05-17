@@ -1,0 +1,64 @@
+Arquitectura Desacoplada y Mitigación de Fraude en un Sistema de Asistencia Biométrico
+En el diseño de sistemas de misión crítica que involucran Inteligencia Artificial, uno de los mayores errores es acoplar la lógica de negocio con los modelos de Machine Learning. Presentamos la arquitectura de un Sistema de Marcación de Asistencia, diseñado bajo un enfoque modular, agnóstico y optimizado para entornos de producción reales, resolviendo problemas como el fraude por suplantación de identidad (spoofing) y la concurrencia de sujetos en la captura.
+
+🏗️ Vista General de la Arquitectura
+El sistema se divide en tres capas claramente definidas mediante una topología desacoplada, lo que permite escalar el cómputo de reconocimiento de forma independiente a la gestión transaccional del negocio.
+
+[ Android Client ] ---> ( HTTPS / Public ) ---> [ .NET Business API ] ---> [ SQL Server ]
+       (ML Kit)                                         |
+                                             (Internal HTTP/REST)
+                                                        v
+                                               [ FastAPI AI Core ] ----> [ PostgreSQL + pgvector ]
+                                            (InsightFace + Anti-Spoofing)
+1. Capa de Cliente (Edge): Android App (Kotlin)
+La optimización del sistema comienza en el dispositivo móvil, reduciendo la carga de procesamiento en el servidor.
+
+Tecnologías: Kotlin, Google ML Kit (Face Detection).
+
+Responsabilidad: Utiliza la cámara nativa para la detección de rostros en tiempo real a nivel local. Una vez que ML Kit confirma la presencia de un rostro válido, captura el frame y lo encapsula.
+
+Heurística de Concurrencia (Multi-Face): Si la cámara detecta dos o más rostros simultáneamente en el encuadre, el cliente aplica una regla de filtrado basada en la proximidad relativa: se selecciona el rostro con el bounding box de mayor área (el más cercano a la cámara), ignorando los rostros secundarios en el fondo antes de enviar la petición.
+
+2. Capa de Negocio (Gateway): .NET Web API (C#)
+Actúa como el único punto de entrada público de la infraestructura, protegiendo el núcleo de IA y gestionando la persistencia transaccional.
+
+Tecnologías: .NET Core, SQL Server.
+
+Responsabilidad: Recibe el payload del cliente, gestiona la autenticación de la petición y orquesta el flujo. Se comunica con el Core de IA mediante el protocolo HTTP/REST tradicional en una red interna segura. Si el Core valida la identidad, la API registra la marcación en SQL Server junto con el timestamp y metadatos correspondientes. También actúa como puente para redirigir los flujos de enrolamiento inicial.
+
+3. Capa Core de IA: FastAPI (Python)
+Un microservicio interno diseñado exclusivamente para operaciones matemáticas, visión por computadora y validación biométrica. Es 100% agnóstico a las reglas de negocio (desconoce conceptos como "empleados" u "horarios").
+
+Tecnologías: FastAPI, InsightFace (Modelo buffalo_l), Silent-Face-Anti-Spoofing, PostgreSQL + pgvector.
+
+Responsabilidad: Ejecuta un pipeline secuencial de dos pasos críticos:
+
+Paso A: Validación de Vida (Silent Face Anti-Spoofing)
+Para evitar el fraude mediante la presentación de fotografías impresas, pantallas de teléfonos o máscaras, la imagen se somete primero a un algoritmo de detección de liveness (antifraude).
+
+Se integró el core inferencial de Silent-Face-Anti-Spoofing, abstrayendo sus modelos preentrenados ligeros para acoplarlos directamente al flujo de trabajo existente. Si el modelo determina que la muestra es un ataque (fake), el pipeline se aborta inmediatamente, retornando un error biométrico a la capa de negocio.
+
+Paso B: Extracción de Embeddings y Matching Vectorial
+Enrolamiento: Extrae el vector de características (face embedding de 512 dimensiones) mediante el modelo buffalo_l y lo almacena en PostgreSQL utilizando la extensión pgvector.
+
+Identificación: Si la muestra supera el test de Anti-Spoofing, se extrae su embedding y se ejecuta una búsqueda de similitud en pgvector. El sistema opera con un umbral estricto de corte de 0.5. Cualquier distancia matricial que no supere este threshold es rechazada, garantizando un equilibrio óptimo entre Falsos Positivos y Falsos Negativos (FAR/FRR). Si hay coincidencia, retorna el ID de la persona.
+
+🔄 Flujo de Ejecución de una Marcación (End-to-End)
+Captura Inteligente: El usuario se posiciona frente a la app Android. ML Kit detecta los rostros; si hay más de uno, filtra y selecciona el más cercano.
+
+Transmisión: La app envía la imagen procesada mediante una petición HTTPS POST a la API de negocio en .NET.
+
+Delegación Interna: La API en .NET redirige los bytes de la imagen vía REST hacia la API interna de FastAPI.
+
+Filtro Antifraude: FastAPI ejecuta el modelo de Silent-Face-Anti-Spoofing. Si la imagen es real, avanza; si es una foto de una foto, corta el flujo.
+
+Inferencia y Búsqueda Vectorial: InsightFace genera el embedding de 512 dimensiones y busca coincidencias en PostgreSQL (pgvector) aplicando el umbral de confianza de 0.5.
+
+Persistencia Transaccional: Al recibir el ID validado desde FastAPI, la API de .NET impacta la base de datos relacional (SQL Server), confirmando la asistencia del colaborador en tiempo real.
+
+🎯 Conclusión y Beneficios de Ingeniería
+Defensa en Profundidad (Security at the Edge & Core): Al delegar el descarte de rostros secundarios al dispositivo móvil y la detección de fraudes al Core de Python, se optimiza el ancho de banda y el uso de CPU del servidor.
+
+Aislamiento Inferencial: El uso de REST tradicional para la intercomunicación de APIs mantiene los servicios altamente legibles, fáciles de testear mediante contratos JSON comunes y listos para ser contenerizados de forma independiente.
+
+Robustez Biométrica: Establecer un umbral matemático claro (0.5) combinado con un validador de vida pasivo (Silent Anti-Spoofing) transforma un simple script de reconocimiento facial en una solución biométrica segura de nivel empresarial.
